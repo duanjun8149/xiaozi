@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>详情 - 软件资源库</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap">
+      <div class="logo"><span id="siteName">软件资源库</span><span id="siteSlogan">良心软件的栖息之地</span></div>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="index.html">Windows</a>
+        <a href="index.html">macOS</a>
+        <a href="index.html">Android</a>
+        <a href="index.html">TV</a>
+        <a href="index.html">限时免费</a>
+        <a href="index.html">系统</a>
+        <a href="index.html">办公</a>
+        <a href="index.html">设计</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="article" id="article"></article>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> 软件资源库 · 本站为静态演示站点</p>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
