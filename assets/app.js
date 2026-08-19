@@ -9,6 +9,27 @@ function escapeHtml(s) {
   ));
 }
 
+/* ---------- SEO 辅助：动态注入 meta 与结构化数据 ---------- */
+function upsertMeta(name, content) {
+  const attr = name.indexOf("og:") === 0 ? "property" : "name";
+  let m = document.querySelector(`meta[${attr}="${name}"]`);
+  if (!m) {
+    m = document.createElement("meta");
+    m.setAttribute(attr, name);
+    document.head.appendChild(m);
+  }
+  m.setAttribute("content", content);
+}
+function injectJsonLd(obj) {
+  let s = document.getElementById("seo-ld");
+  if (s) s.remove();
+  s = document.createElement("script");
+  s.type = "application/ld+json";
+  s.id = "seo-ld";
+  s.textContent = JSON.stringify(obj);
+  document.head.appendChild(s);
+}
+
 /* ---------- 首页 ---------- */
 function renderHome() {
   const grid = document.getElementById("grid");
@@ -86,6 +107,22 @@ function renderArticle() {
   }
   const cat = CATEGORIES[p.category] || { label: p.category, color: "#888" };
   document.title = p.title + " - " + SITE.name;
+
+  // SEO：动态描述 + 结构化数据（利于百度和 AI 搜索引用）
+  upsertMeta("description", p.summary);
+  upsertMeta("og:title", p.title + " - " + SITE.name);
+  upsertMeta("og:description", p.summary);
+  injectJsonLd({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": p.title,
+    "applicationCategory": cat.label,
+    "operatingSystem": cat.label,
+    "description": p.summary,
+    "url": location.href,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" }
+  });
+
   document.getElementById("siteName").textContent = SITE.name;
   document.getElementById("siteSlogan").textContent = SITE.slogan;
 
