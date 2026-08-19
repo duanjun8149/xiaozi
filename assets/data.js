@@ -32,7 +32,7 @@ const CATEGORIES = {
 
 const SITE = {
   name: "软件资源库",
-  slogan: "良心软件的栖息之地",
+  slogan: "软件清澈源泉",
   // 想换站名就改上面两行，比如改成你自己的名字
 };
 
