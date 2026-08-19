@@ -144,11 +144,10 @@ function renderArticle() {
 function renderAd() {
   const el = document.getElementById("adBox");
   if (!el) return;
-  if (AFFILIATE.enabled) {
-    // 填好 AFFILIATE 后，把百度联盟/Google AdSense 代码贴到此处即可
-    el.innerHTML = `<div class="ad-inner">📣 广告位（已启用联盟 / AdSense）</div>`;
+  if (AFFILIATE.adCode && AFFILIATE.adCode.trim()) {
+    el.innerHTML = `<div class="ad-inner">${AFFILIATE.adCode}</div>`;
   } else {
-    el.innerHTML = `<div class="ad-placeholder">📣 广告招商中 · 在 <code>assets/data.js</code> 的 <code>AFFILIATE</code> 填写联盟 PID 或粘贴 AdSense 代码后，这里就会展示收益</div>`;
+    el.innerHTML = `<div class="ad-placeholder">📣 广告招商中 · 在 <code>data.js</code> 的 <code>AFFILIATE.adCode</code> 粘贴百度联盟 / Google AdSense 代码后，这里就会展示收益</div>`;
   }
 }
 
@@ -160,7 +159,11 @@ function renderAffiliate(post) {
     if (AFFILIATE.taobao) html += `<a class="aff-btn" href="${AFFILIATE.taobao}" target="_blank" rel="nofollow">淘宝联盟</a>`;
     if (AFFILIATE.jd)     html += `<a class="aff-btn" href="${AFFILIATE.jd}" target="_blank" rel="nofollow">京东联盟</a>`;
     if (AFFILIATE.pdd)    html += `<a class="aff-btn" href="${AFFILIATE.pdd}" target="_blank" rel="nofollow">多多进宝</a>`;
-    html += `<p class="aff-tip">通过你的链接下单，你即可获得平台佣金（零库存、零售后）。</p>`;
+    if (AFFILIATE.realCommission) {
+      html += `<p class="aff-tip">✅ 已接入返利 · 通过你的链接下单，你即可获得平台佣金（零库存、零售后）。</p>`;
+    } else {
+      html += `<p class="aff-tip">⚠️ 当前为引流占位入口（不计佣）。在 <code>data.js</code> 的 <code>AFFILIATE</code> 用后台生成的「推广链接」替换 <code>jd</code> / <code>pdd</code>，并把 <code>realCommission</code> 改为 <code>true</code>，即可变身返利链接。</p>`;
+    }
   } else {
     html += `<p class="aff-tip">站长推荐位 · 在 <code>data.js</code> 的 <code>AFFILIATE</code> 填入你的联盟 PID 后，这里会变成可点击的返利链接，用户下单你拿佣金。</p>`;
   }

@@ -38,10 +38,18 @@ const SITE = {
 
 /* 联盟返利 / 广告配置 —— 填好下方字段并把下面的 enabled 改为 true 即可生效 */
 const AFFILIATE = {
-  enabled: false,            // 填好 PID 后改成 true，站点才展示返利按钮
+  enabled: true,             // 已启用联盟返利入口
+  // ↓↓↓ 当前为「引流占位」链接（不带推广参数，访客可点但不计佣）↓↓↓
+  // 想真返利：去对应联盟后台「生成推广链接」拿到带 pid 的完整链接，替换下面 jd / pdd 的值，
+  // 并把 realCommission 改为 true 即可。
   taobao: "",                // 淘宝联盟 PID（如 https://uland.taobao.com/...?pid=mm_xxx）
-  jd: "",                    // 京东联盟 PID
-  pdd: "",                   // 拼多多多多进宝 PID
+  jd: "https://union.jd.com/",              // 引流占位：京东联盟公开入口（替换你的推广链接后返利）
+  pdd: "https://jinbao.pinduoduo.com/",     // 引流占位：多多进宝公开搜券（替换你的推广链接后返利）
+  realCommission: false,    // 占位链接不计佣；替换为后台推广链接后改 true
+  // 你的联盟账号（已记录，方便以后拼链接 / 写后端代理）
+  jdId: "2038488626",        // 京东联盟 ID
+  pddId: "44699964",         // 多多客 ID
+  adCode: "",                // 粘贴百度联盟 / Google AdSense 广告代码到此，广告位即生效
   inviteCode: "666666",      // 邀请码（黑域宝盒式拉新）
   vipUrl: "",                // 会员/资源包开通链接（留空则显示占位）
 };
