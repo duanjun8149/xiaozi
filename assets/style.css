@@ -95,6 +95,61 @@ a { color: inherit; text-decoration: none; }
 .footer { background: #222; color: #aaa; text-align: center; padding: 24px 16px; font-size: 13px; }
 .footer a { color: #ccc; }
 .empty { text-align: center; color: var(--muted); padding: 60px 0; }
+
+/* ===== 变现骨架：广告位 / 联盟返利卡片 ===== */
+.ad-slot { margin: 18px 0; }
+.ad-placeholder, .ad-inner {
+  border: 1px dashed #d7dce3; background: #f6f8fb; color: #6b7280;
+  border-radius: 12px; padding: 16px; text-align: center; font-size: 13px;
+}
+.ad-placeholder code { background: #eef1f6; padding: 1px 6px; border-radius: 4px; }
+.aff-card {
+  margin-top: 26px; padding: 18px 20px; border: 1px solid #e6ebf1;
+  border-radius: 14px; background: linear-gradient(180deg,#fbfdff,#f4f8ff);
+}
+.aff-card h3 { margin: 0 0 10px; font-size: 16px; }
+.aff-tip { font-size: 13px; color: #5a6068; margin: 8px 0 0; }
+.aff-tip code { background: #eef1f6; padding: 1px 6px; border-radius: 4px; }
+.aff-btn {
+  display: inline-block; margin: 4px 8px 0 0; padding: 9px 18px; border-radius: 22px;
+  background: var(--primary); color: #fff; font-weight: 600; text-decoration: none; font-size: 14px;
+}
+.aff-btn:hover { background: #1f6fd6; }
+.aff-code { font-size: 13px; color: #5a6068; margin: 10px 0 0; }
+.aff-code b { color: var(--primary); letter-spacing: 1px; }
+
+/* ===== 会员 / 资源包页 ===== */
+.vip-hero { text-align: center; padding: 30px 0 10px; }
+.vip-hero h1 { font-size: 26px; margin: 0 0 12px; }
+.vip-sub { color: #5a6068; font-size: 14px; max-width: 720px; margin: 0 auto; line-height: 1.7; }
+.vip-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 28px 0; }
+.tier {
+  position: relative; border: 1px solid #e6ebf1; border-radius: 16px; padding: 24px 20px;
+  background: #fff; display: flex; flex-direction: column;
+}
+.tier.hot { border-color: var(--primary); box-shadow: 0 10px 30px rgba(43,125,233,.15); }
+.ribbon {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--primary); color: #fff; font-size: 12px; padding: 3px 14px; border-radius: 20px;
+}
+.tier h3 { margin: 0 0 10px; font-size: 17px; text-align: center; }
+.tier .price { font-size: 30px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 14px; }
+.tier .price span { font-size: 14px; color: var(--muted); font-weight: 400; }
+.tier ul { list-style: none; padding: 0; margin: 0 0 18px; flex: 1; }
+.tier li { font-size: 13px; color: #4a5159; padding: 7px 0; border-bottom: 1px dashed #eef1f6; }
+.tier-btn {
+  display: block; text-align: center; padding: 11px 0; border-radius: 24px;
+  background: var(--primary); color: #fff; font-weight: 600; text-decoration: none;
+}
+.tier-btn:hover { background: #1f6fd6; }
+.tier-btn.ghost { background: #eef1f6; color: #4a5159; }
+.tier-btn.ghost:hover { background: #e2e7ee; }
+.vip-faq { background: #f7f9fc; border-radius: 14px; padding: 20px 22px; margin: 10px 0 6px; }
+.vip-faq h3 { margin: 0 0 10px; font-size: 16px; }
+.vip-faq p { font-size: 13px; color: #4a5159; line-height: 1.7; margin: 8px 0; }
+.vip-faq code { background: #eef1f6; padding: 1px 6px; border-radius: 4px; }
+@media (max-width: 760px) { .vip-tiers { grid-template-columns: 1fr; } }
+
 @media (max-width: 600px) {
   .header .wrap { flex-direction: column; align-items: flex-start; }
   .article { padding: 18px; }

@@ -42,6 +42,8 @@ function renderHome() {
   document.getElementById("siteSlogan").textContent = SITE.slogan;
   document.title = SITE.name + " - " + SITE.slogan;
 
+  renderAd();
+
   // 分类筛选按钮
   let chips = `<span class="chip active" data-cat="all">全部</span>`;
   for (const [key, c] of Object.entries(CATEGORIES)) {
@@ -126,6 +128,9 @@ function renderArticle() {
   document.getElementById("siteName").textContent = SITE.name;
   document.getElementById("siteSlogan").textContent = SITE.slogan;
 
+  renderAd();
+  renderAffiliate(p);
+
   box.innerHTML = `
     <span class="badge" style="background:${cat.color}">${cat.label}</span>
     <h1>${escapeHtml(p.title)}</h1>
@@ -133,6 +138,35 @@ function renderArticle() {
     <div class="content">${p.content}</div>
     <a class="dl-btn" href="${p.download}" target="_blank" rel="noopener">前往官网 / 下载 ↓</a>
     <br><a class="back" href="index.html">← 返回首页</a>`;
+}
+
+/* ---------- 变现骨架：广告位 + 联盟返利 ---------- */
+function renderAd() {
+  const el = document.getElementById("adBox");
+  if (!el) return;
+  if (AFFILIATE.enabled) {
+    // 填好 AFFILIATE 后，把百度联盟/Google AdSense 代码贴到此处即可
+    el.innerHTML = `<div class="ad-inner">📣 广告位（已启用联盟 / AdSense）</div>`;
+  } else {
+    el.innerHTML = `<div class="ad-placeholder">📣 广告招商中 · 在 <code>assets/data.js</code> 的 <code>AFFILIATE</code> 填写联盟 PID 或粘贴 AdSense 代码后，这里就会展示收益</div>`;
+  }
+}
+
+function renderAffiliate(post) {
+  const el = document.getElementById("affiliateBox");
+  if (!el) return;
+  let html = `<div class="aff-card"><h3>🛒 相关好物推荐</h3>`;
+  if (AFFILIATE.enabled && (AFFILIATE.taobao || AFFILIATE.jd || AFFILIATE.pdd)) {
+    if (AFFILIATE.taobao) html += `<a class="aff-btn" href="${AFFILIATE.taobao}" target="_blank" rel="nofollow">淘宝联盟</a>`;
+    if (AFFILIATE.jd)     html += `<a class="aff-btn" href="${AFFILIATE.jd}" target="_blank" rel="nofollow">京东联盟</a>`;
+    if (AFFILIATE.pdd)    html += `<a class="aff-btn" href="${AFFILIATE.pdd}" target="_blank" rel="nofollow">多多进宝</a>`;
+    html += `<p class="aff-tip">通过你的链接下单，你即可获得平台佣金（零库存、零售后）。</p>`;
+  } else {
+    html += `<p class="aff-tip">站长推荐位 · 在 <code>data.js</code> 的 <code>AFFILIATE</code> 填入你的联盟 PID 后，这里会变成可点击的返利链接，用户下单你拿佣金。</p>`;
+  }
+  if (AFFILIATE.inviteCode) html += `<p class="aff-code">邀请码：<b>${AFFILIATE.inviteCode}</b></p>`;
+  html += `</div>`;
+  el.innerHTML = html;
 }
 
 /* 根据页面元素决定渲染哪个 */

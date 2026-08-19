@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会员 / 资源包 - 软件资源库</title>
+  <meta name="description" content="装机必备工具包与会员权益：整理好的免费开源软件合集、配套教程与持续更新。">
+  <meta property="og:title" content="会员 / 资源包 - 软件资源库">
+  <meta property="og:description" content="整理好的免费开源软件合集、配套教程与持续更新。">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap">
+      <div class="logo"><span id="siteName">软件资源库</span><span id="siteSlogan">软件清澈源泉</span></div>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="vip.html">会员/资源包</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="vip-hero">
+      <h1>🎁 装机必备工具包 · 会员权益</h1>
+      <p class="vip-sub">本站收录的软件<strong>本身全部免费、开源、无捆绑</strong>。会员购买的是「帮你整理好 + 配套教程 + 持续更新」的便利性——一次买断，长期省心。</p>
+    </section>
+
+    <section class="vip-tiers">
+      <div class="tier">
+        <h3>游客（免费）</h3>
+        <div class="price">¥0</div>
+        <ul>
+          <li>浏览全部软件清单</li>
+          <li>查看官方下载直链</li>
+          <li>使用分类与搜索</li>
+        </ul>
+        <a class="tier-btn ghost" href="index.html">去逛逛</a>
+      </div>
+
+      <div class="tier hot">
+        <div class="ribbon">最受欢迎</div>
+        <h3>普通会员</h3>
+        <div class="price">¥19<span>/月</span></div>
+        <ul>
+          <li>「装机必备 50 款」合集（一键打包）</li>
+          <li>每款软件的图文安装教程</li>
+          <li>会员专属资源更新推送</li>
+          <li>私域社群答疑</li>
+        </ul>
+        <a class="tier-btn" id="vipBtn" href="#" target="_blank" rel="noopener">立即开通</a>
+      </div>
+
+      <div class="tier">
+        <h3>永久会员</h3>
+        <div class="price">¥99<span>/终身</span></div>
+        <ul>
+          <li>含普通会员全部权益</li>
+          <li>终身免费获取新合集</li>
+          <li>优先定制资源包</li>
+          <li>专属 1v1 装机指导</li>
+        </ul>
+        <a class="tier-btn" id="vipBtn2" href="#" target="_blank" rel="noopener">立即开通</a>
+      </div>
+    </section>
+
+    <section class="vip-faq">
+      <h3>常见问题</h3>
+      <p><b>这些软件收费吗？</b> 不收费。所有软件都是免费/开源工具，你也能自己在站里免费下载。会员是為了「省去你挨个找、挨个配的时间」。</p>
+      <p><b>怎么付款？</b> 在 <code>assets/data.js</code> 的 <code>AFFILIATE.vipUrl</code> 填入你的收款/开通链接（如微信小店、知识星球、爱发电等），本页按钮即自动跳转。</p>
+      <p><b>想直接做同款？</b> 整个站点都是静态文件，内容都在 <code>data.js</code> 里，照着改即可。</p>
+    </section>
+
+    <p style="text-align:center;margin:24px 0"><a class="back" href="index.html">← 返回首页</a></p>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> 软件资源库 · 本站为静态演示站点</p>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/data.js"></script>
+  <script>
+    // 若已配置 AFFILIATE.vipUrl，按钮跳转；否则提示占位
+    (function () {
+      var url = (typeof AFFILIATE !== "undefined" && AFFILIATE.vipUrl) ? AFFILIATE.vipUrl : "";
+      ["vipBtn", "vipBtn2"].forEach(function (id) {
+        var b = document.getElementById(id);
+        if (!b) return;
+        if (url) { b.href = url; }
+        else { b.href = "javascript:void(0)"; b.textContent = "开通链接待设置"; b.style.opacity = .7; }
+      });
+      if (typeof SITE !== "undefined") {
+        document.getElementById("siteName").textContent = SITE.name;
+        document.getElementById("siteSlogan").textContent = SITE.slogan;
+      }
+    })();
+  </script>
+</body>
+</html>
