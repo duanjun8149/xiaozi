@@ -155,17 +155,23 @@ function renderAffiliate(post) {
   const el = document.getElementById("affiliateBox");
   if (!el) return;
   let html = `<div class="aff-card"><h3>🛒 相关好物推荐</h3>`;
-  if (AFFILIATE.enabled && (AFFILIATE.taobao || AFFILIATE.jd || AFFILIATE.pdd)) {
-    if (AFFILIATE.taobao) html += `<a class="aff-btn" href="${AFFILIATE.taobao}" target="_blank" rel="nofollow">淘宝联盟</a>`;
-    if (AFFILIATE.jd)     html += `<a class="aff-btn" href="${AFFILIATE.jd}" target="_blank" rel="nofollow">京东联盟</a>`;
-    if (AFFILIATE.pdd)    html += `<a class="aff-btn" href="${AFFILIATE.pdd}" target="_blank" rel="nofollow">多多进宝</a>`;
-    if (AFFILIATE.realCommission) {
-      html += `<p class="aff-tip">✅ 已接入返利 · 通过你的链接下单，你即可获得平台佣金（零库存、零售后）。</p>`;
-    } else {
-      html += `<p class="aff-tip">⚠️ 当前为引流占位入口（不计佣）。在 <code>data.js</code> 的 <code>AFFILIATE</code> 用后台生成的「推广链接」替换 <code>jd</code> / <code>pdd</code>，并把 <code>realCommission</code> 改为 <code>true</code>，即可变身返利链接。</p>`;
+  const items = [
+    { label: "京东联盟", url: AFFILIATE.jd,     real: AFFILIATE.jdReal },
+    { label: "多多进宝", url: AFFILIATE.pdd,    real: AFFILIATE.pddReal },
+    { label: "淘宝联盟", url: AFFILIATE.taobao, real: AFFILIATE.taobaoReal },
+  ].filter(i => i.url);
+  if (items.length) {
+    items.forEach(i => {
+      html += `<a class="aff-btn" href="${i.url}" target="_blank" rel="nofollow">${i.label}</a>`;
+    });
+    if (items.some(i => i.real)) {
+      html += `<p class="aff-tip">✅ <b>京东联盟</b>已接入返利 · 用户通过你的链接下单，佣金自动入账（零库存、零售后）。</p>`;
+    }
+    if (items.some(i => !i.real)) {
+      html += `<p class="aff-tip">⚠️ <b>多多进宝</b>目前为引流占位（不计佣）。在 <code>data.js</code> 用后台「推广链接」替换 <code>pdd</code> 并把 <code>pddReal</code> 改为 <code>true</code>，即可变返利。</p>`;
     }
   } else {
-    html += `<p class="aff-tip">站长推荐位 · 在 <code>data.js</code> 的 <code>AFFILIATE</code> 填入你的联盟 PID 后，这里会变成可点击的返利链接，用户下单你拿佣金。</p>`;
+    html += `<p class="aff-tip">站长推荐位 · 在 <code>data.js</code> 的 <code>AFFILIATE</code> 填入联盟 PID 后，这里会变成可点击的返利链接，用户下单你拿佣金。</p>`;
   }
   if (AFFILIATE.inviteCode) html += `<p class="aff-code">邀请码：<b>${AFFILIATE.inviteCode}</b></p>`;
   html += `</div>`;
