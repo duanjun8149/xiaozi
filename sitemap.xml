@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>http://5344.ccwu.cc/</loc><changefreq>daily</changefreq></url>
   <url><loc>http://5344.ccwu.cc/vip.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>http://5344.ccwu.cc/about.html</loc><changefreq>monthly</changefreq></url>
   <url><loc>http://5344.ccwu.cc/article.html?id=1</loc><changefreq>weekly</changefreq></url>
   <url><loc>http://5344.ccwu.cc/article.html?id=2</loc><changefreq>weekly</changefreq></url>
   <url><loc>http://5344.ccwu.cc/article.html?id=3</loc><changefreq>weekly</changefreq></url>
