@@ -54,6 +54,22 @@
   </header>
 
   <main class="wrap">
+    <section class="brand-hero">
+      <div class="brand-hero-inner">
+        <div class="brand-eyebrow">软件资源库 · 品牌主张</div>
+        <h1 class="brand-title">软件一定要硬</h1>
+        <p class="brand-desc">只推免费、开源、<b>无捆绑</b>的好东西。<br>帮你把电脑和手机，收拾得干干净净。</p>
+        <div class="brand-actions">
+          <a class="brand-cta" href="about.html">📲 关注公众号 / 小红书</a>
+          <a class="brand-cta ghost" href="#grid">🔍 逛逛 215 款软件</a>
+        </div>
+        <div class="brand-stats">
+          <span><b>215</b> 款免费/开源软件</span>
+          <span><b>13</b> 个分类</span>
+          <span><b>0</b> 捆绑 · 0 弹窗</span>
+        </div>
+      </div>
+    </section>
     <div class="toolbar">
       <div class="search">
         <span class="ico">🔍</span>
@@ -73,12 +89,27 @@
 
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   <script src="assets/data.js"></script>
+  <script src="assets/data-more.js"></script>
   <script src="assets/app.js"></script>
   <a class="follow-fab" href="about.html" title="关注公众号 / 小红书" aria-label="关注我们">
     <span class="follow-fab-ico">📲</span>
     <span class="follow-fab-txt">关注</span>
   </a>
   <style>
+    .brand-hero{margin:22px 0 6px;background:linear-gradient(135deg,#ff2e4d,#ff7a3d);border-radius:18px;padding:34px 30px;color:#fff;box-shadow:0 10px 30px rgba(255,46,77,.18)}
+    .brand-hero-inner{max-width:760px}
+    .brand-eyebrow{font-size:13px;opacity:.9;letter-spacing:2px;margin-bottom:10px}
+    .brand-title{font-size:40px;font-weight:900;letter-spacing:2px;margin-bottom:12px;line-height:1.1}
+    .brand-desc{font-size:16px;line-height:1.7;opacity:.96;margin-bottom:20px}
+    .brand-desc b{font-weight:800}
+    .brand-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+    .brand-cta{display:inline-block;padding:11px 22px;border-radius:24px;background:#fff;color:#e11d2f;font-weight:700;font-size:14px;transition:.2s}
+    .brand-cta:hover{transform:translateY(-2px);color:#e11d2f}
+    .brand-cta.ghost{background:rgba(255,255,255,.18);color:#fff}
+    .brand-cta.ghost:hover{background:rgba(255,255,255,.28)}
+    .brand-stats{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;opacity:.95}
+    .brand-stats b{font-size:20px;font-weight:800;margin-right:4px}
+    @media(max-width:600px){.brand-title{font-size:30px}.brand-hero{padding:26px 20px}}
     .follow-fab{position:fixed;right:18px;bottom:18px;display:flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,#ff2e4d,#ff8a3d);color:#fff;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 6px 18px rgba(255,46,77,.35);z-index:9999;transition:transform .15s}
     .follow-fab:hover{transform:translateY(-2px);color:#fff}
     .follow-fab-ico{font-size:18px}
