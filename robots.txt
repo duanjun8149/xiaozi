@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://duanjun8149.github.io/xiaozi/sitemap.xml
+Sitemap: http://5344.ccwu.cc/sitemap.xml
