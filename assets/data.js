@@ -52,7 +52,7 @@ const AFFILIATE = {
   jdId: "2038488626",        // 京东联盟 ID
   pddId: "44699964",         // 多多客 ID
   adCode: "",                // 粘贴百度联盟 / Google AdSense 广告代码到此，广告位即生效
-  inviteCode: "666666",      // 邀请码（黑域宝盒式拉新）
+  inviteCode: "999999",      // 邀请码（黑域宝盒式拉新）
   vipUrl: "",                // 会员/资源包开通链接（留空则显示占位）
 };
 
